@@ -60,6 +60,7 @@ All settings are optional.
 - `dir` (String|Array)
   - a folder or list of folders to use as the base path for static assets (default `process.cwd()`)
   - a default `index.html` will be searched in the first `dir` folder
+  - url path that maps to the directory may be specified by using `directory_path:url_path` notation
 - `stream` (writable stream)
   - a writable stream like `process.stdout` for ndjson logging (default `undefined`)
 - `debug` (Boolean)
