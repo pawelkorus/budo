@@ -54,3 +54,18 @@ test('should find the first index.html', function (t) {
     })
   })
 })
+
+test('should serve directory mapped to url path', function (t) {
+  t.plan(1)
+
+  var mappingOne = '/mapping/for/one'
+  var app = budo({
+    dir: [ path1 + ':' + mappingOne ]
+  }).on('connect', function (ev) {
+    request.get({ uri: ev.uri + 'mapping/for/one/one.txt' }, function (err, res, body) {
+      if (err) return t.fail(err)
+      t.equal(body, 'one', 'gets one using url path ' + mappingOne)
+      app.close()
+    })
+  })
+})
